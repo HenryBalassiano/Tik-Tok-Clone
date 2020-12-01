@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/HenryBalassiano/Tik-Tok-Clone/static/css/main.b2ca5f74.chunk.css",
-    "main.js": "/HenryBalassiano/Tik-Tok-Clone/static/js/main.ec362778.chunk.js",
-    "main.js.map": "/HenryBalassiano/Tik-Tok-Clone/static/js/main.ec362778.chunk.js.map",
-    "runtime-main.js": "/HenryBalassiano/Tik-Tok-Clone/static/js/runtime-main.8dd39434.js",
-    "runtime-main.js.map": "/HenryBalassiano/Tik-Tok-Clone/static/js/runtime-main.8dd39434.js.map",
-    "static/js/2.54350585.chunk.js": "/HenryBalassiano/Tik-Tok-Clone/static/js/2.54350585.chunk.js",
-    "static/js/2.54350585.chunk.js.map": "/HenryBalassiano/Tik-Tok-Clone/static/js/2.54350585.chunk.js.map",
-    "static/js/3.8be0c03a.chunk.js": "/HenryBalassiano/Tik-Tok-Clone/static/js/3.8be0c03a.chunk.js",
-    "static/js/3.8be0c03a.chunk.js.map": "/HenryBalassiano/Tik-Tok-Clone/static/js/3.8be0c03a.chunk.js.map",
-    "index.html": "/HenryBalassiano/Tik-Tok-Clone/index.html",
-    "static/css/main.b2ca5f74.chunk.css.map": "/HenryBalassiano/Tik-Tok-Clone/static/css/main.b2ca5f74.chunk.css.map",
-    "static/js/2.54350585.chunk.js.LICENSE.txt": "/HenryBalassiano/Tik-Tok-Clone/static/js/2.54350585.chunk.js.LICENSE.txt"
+    "main.css": "/Tik-Tok-Clone/static/css/main.b2ca5f74.chunk.css",
+    "main.js": "/Tik-Tok-Clone/static/js/main.ec362778.chunk.js",
+    "main.js.map": "/Tik-Tok-Clone/static/js/main.ec362778.chunk.js.map",
+    "runtime-main.js": "/Tik-Tok-Clone/static/js/runtime-main.0a7fbf52.js",
+    "runtime-main.js.map": "/Tik-Tok-Clone/static/js/runtime-main.0a7fbf52.js.map",
+    "static/js/2.54350585.chunk.js": "/Tik-Tok-Clone/static/js/2.54350585.chunk.js",
+    "static/js/2.54350585.chunk.js.map": "/Tik-Tok-Clone/static/js/2.54350585.chunk.js.map",
+    "static/js/3.8be0c03a.chunk.js": "/Tik-Tok-Clone/static/js/3.8be0c03a.chunk.js",
+    "static/js/3.8be0c03a.chunk.js.map": "/Tik-Tok-Clone/static/js/3.8be0c03a.chunk.js.map",
+    "index.html": "/Tik-Tok-Clone/index.html",
+    "static/css/main.b2ca5f74.chunk.css.map": "/Tik-Tok-Clone/static/css/main.b2ca5f74.chunk.css.map",
+    "static/js/2.54350585.chunk.js.LICENSE.txt": "/Tik-Tok-Clone/static/js/2.54350585.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8dd39434.js",
+    "static/js/runtime-main.0a7fbf52.js",
     "static/js/2.54350585.chunk.js",
     "static/css/main.b2ca5f74.chunk.css",
     "static/js/main.ec362778.chunk.js"
