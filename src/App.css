@@ -1,38 +1,168 @@
-.App {
-  text-align: center;
+
+
+html,body{
+  margin:0;
+  padding:0;
+  background-color: black;
+  scroll-snap-type: y mandatory;
+
+  
+}
+video{
+border-radius: 30px 30px 30px 30px ;
+height:100%;
+width:450px;
+
+object-fit: cover;
+
+}
+audio{
+  display: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#video-container{
+  height:100%;
+width:450px;
+position: relative;
+top: 4em;
+scroll-snap-align:start;
+display: flex;
+justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.App{
+  display:flex;
+justify-content: center;
+}
+#video-scroll{
+
+overflow-y: scroll;
+scroll-snap-type: y mandatory;
+height: 815px;
+position: relative;
+top:5em;
+width: 450px;
+
+border-radius: 30px 30px 30px 30px ;
+
+
+
+}
+#play-btn{
+  position: absolute;
+  top:18em;
+  height: 100px;
+
+}
+#heart{
+  position: absolute;
+color:white;
+  font-size: 45px;
+
+cursor: pointer;
+
+}
+#heart2{
+  position: absolute;
+    top:18em;
+    font-size: 45px;
+  top:16.5em;
+  left:9.6em;
+display:none;
+color:white
+}
+#ld{
+  position: absolute;
+  left:83%;
+  top:83%;
+  z-index: 4;
+  display:flex;
   flex-direction: column;
-  align-items: center;
+ 
+}
+#icons{
+  color:white;
+}
+h1{
+  z-index: 7;
+  position: absolute;
+  font-size: 0.9em;
+  top:90%;
+  color:white;
+  text-align: left;
+}
+#logo{
+  position: absolute;
+  height: 45px;
+  left:26px;
+  top:20px;
+
+}
+#author-title{
+  font-size:0.9em;
+  position: absolute;
+display:flex;
+color:white;
+flex-direction: column-reverse;
+   width:100%;
+   margin-left: 50px;
+   top:90%;
+   font-family: "Roboto",sans-serif;
+   font-weight: 300;
+   text-transform: lowercase;
+   
+}
+#like-count{
+  color:white;
+  position: absolute;
+  left:1.8em;
+  top:3.5em
+
+}
+#author{
+  text-decoration: underline;
+  position: relative;
+  margin:0px;
+  font-size: 1.2em;
+  font-weight: 700;
+
+}
+#btns{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 550px) {
+
+  #video-container {
+width: 100vw!important;
+height: 100vh !important;
+border-radius: 0;  
+display: flex;
+
+
   }
-  to {
-    transform: rotate(360deg);
-  }
+video{
+  border-radius: 0;
+  width: 100%;
+  object-fit: cover;
+  height: 100vh;
+}
+#video-scroll{
+  width: 100vw !important;
+  height: 102vh !important;
+  top:0;
+  border-radius: 0;  
+  z-index: inherit;
+
+  
+}
+
+
 }
