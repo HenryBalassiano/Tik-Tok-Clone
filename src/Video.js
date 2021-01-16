@@ -1,18 +1,47 @@
 import './App.css';
-import React, { useRef,useState } from 'react';
+import React, { useRef,useState,useEffect} from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-                  function Video ({source,title,author}){
+
+
+
+
+                        function useOnScreen(ref, rootMargin = '0px') {
+                              const [isIntersecting, setIntersecting] = useState(false);
+                        
+                              useEffect(() => {
+                              const observer = new IntersectionObserver(
+                              ([entry]) => {
+                                    setIntersecting(entry.isIntersecting);
+                              },
+                              {
+                                    rootMargin
+                              }
+                              );
+                              if (ref.current) {
+                              observer.observe(ref.current);
+                              }
+                              return () => {
+                              observer.unobserve(ref.current);
+                              };
+                              }, []); 
+    
+                              return isIntersecting;
+                        }
+
+
+                  function Video ({source}){
                         const [play, setPlay] = useState(false)
                         const [click, setClicked] = useState(false)
                         const [count, setCount] = useState()
-
                         const videoRef= useRef(null)
                         const audioRef= useRef(null)
-                        const heart= useRef(false)
                         const playRef= useRef('')
-                        
+                        const ref = useRef();
+                        const onScreen = useOnScreen(ref, '100px');
+
+
                         const clickFunc = () =>{
                               if(click === false){
                                     setClicked(true)
@@ -21,42 +50,35 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
                               else{
                                     setClicked(false)
                                     setCount('')
+                                    console.log(click)
 
                               }
                         }
-
-                        const videoPress =()=>{     
-                              
-                              if(play ){
-                              videoRef.current.pause()
-                              audioRef.current.pause()
-
-                              setPlay(false)               
-                              playRef.current.style.display='block'     
-                              
-
-                           
-                              
-                              }else{
+                        useEffect(()=>{
+                              if(onScreen === true){
                                     videoRef.current.play()
                                     audioRef.current.play()
-
-                                    setPlay(true)       
-                                    playRef.current.style.display='none'     
+                                    
+                              }
+                              else{
+                                    videoRef.current.pause()
+                                    audioRef.current.pause()   
 
 
                               }
-                        
-                  }
+                        })
+                        const videoPlay = ()=>{
+                          videoRef.current.play()
+                          audioRef.current.play()
+
+                        }
                         return(
-                        <div id='video-container'>        
+                              
+                        <div id='video-container'  ref={ref}>        
                         <img ref={playRef} id='play-btn' src= './play.png'  alt='play'/>
-                        <img  id='logo' src= './logo.png'  alt='logo'/>
-                        <div id='author-title'>
-                        <p id='title' >{title}...</p>
-                        <p id='author'>@{author}</p>
+                        <h1  id='logo'> F</h1>
                         
-                        </div>
+                        
                         <div id='ld'>
                         <IconButton id='icons' onClick={clickFunc}>
       {click ? <FavoriteIcon style={{ fontSize: '40px' }} />  :<FavoriteBorderIcon style={{ fontSize: '40px' }}/> }
@@ -65,8 +87,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 </div>
 
                   <video  ref={videoRef} 
-
-                  onClick={videoPress}
+                  onClick={videoPlay}
                         src={source}
                         type="video/mp4"
                         ></video>
@@ -79,6 +100,4 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
                   }
-
-
-export default Video
+                  export default Video
