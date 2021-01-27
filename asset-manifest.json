@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Tik-Tok-Clone/static/css/main.db9ff75f.chunk.css",
-    "main.js": "/Tik-Tok-Clone/static/js/main.a177092e.chunk.js",
-    "main.js.map": "/Tik-Tok-Clone/static/js/main.a177092e.chunk.js.map",
+    "main.js": "/Tik-Tok-Clone/static/js/main.0cf8f55d.chunk.js",
+    "main.js.map": "/Tik-Tok-Clone/static/js/main.0cf8f55d.chunk.js.map",
     "runtime-main.js": "/Tik-Tok-Clone/static/js/runtime-main.fadec8d1.js",
     "runtime-main.js.map": "/Tik-Tok-Clone/static/js/runtime-main.fadec8d1.js.map",
     "static/css/2.b3443363.chunk.css": "/Tik-Tok-Clone/static/css/2.b3443363.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.b3443363.chunk.css",
     "static/js/2.91473f04.chunk.js",
     "static/css/main.db9ff75f.chunk.css",
-    "static/js/main.a177092e.chunk.js"
+    "static/js/main.0cf8f55d.chunk.js"
   ]
 }
