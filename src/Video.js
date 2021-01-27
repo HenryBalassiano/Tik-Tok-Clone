@@ -1,103 +1,123 @@
-import './App.css';
-import React, { useRef,useState,useEffect} from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import "./App.css";
+import React, { useRef, useState, useEffect } from "react";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
+function useOnScreen(ref, rootMargin = "0px") {
+  const [isIntersecting, setIntersecting] = useState(false);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIntersecting(entry.isIntersecting);
+      },
+      {
+        rootMargin,
+      }
+    );
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      observer.unobserve(ref.current);
+    };
+  }, []);
 
+  return isIntersecting;
+}
 
-                        function useOnScreen(ref, rootMargin = '0px') {
-                              const [isIntersecting, setIntersecting] = useState(false);
-                        
-                              useEffect(() => {
-                              const observer = new IntersectionObserver(
-                              ([entry]) => {
-                                    setIntersecting(entry.isIntersecting);
-                              },
-                              {
-                                    rootMargin
-                              }
-                              );
-                              if (ref.current) {
-                              observer.observe(ref.current);
-                              }
-                              return () => {
-                              observer.unobserve(ref.current);
-                              };
-                              }, []); 
-    
-                              return isIntersecting;
-                        }
+function Video({ source }) {
+  const [play, setPlay] = useState(false);
+  const [click, setClicked] = useState(false);
+  const [count, setCount] = useState();
+  const [canPlays, setCanPlay] = useState(false);
+  console.log(canPlays);
+  const videoRef = useRef();
+  const audioRef = useRef(false);
+  const playRef = useRef(false);
+  const ref = useRef();
+  const navSec = useRef(null);
 
+  const onScreen = useOnScreen(ref, "100px");
 
-                  function Video ({source}){
-                        const [play, setPlay] = useState(false)
-                        const [click, setClicked] = useState(false)
-                        const [count, setCount] = useState()
-                        const videoRef= useRef(null)
-                        const audioRef= useRef(null)
-                        const playRef= useRef('')
-                        const ref = useRef();
-                        const onScreen = useOnScreen(ref, '100px');
+  const clickFunc = () => {
+    if (click === false) {
+      setClicked(true);
+      setCount(1);
+    } else {
+      setClicked(false);
+      setCount("");
+      console.log(click);
+    }
+  };
+  const canPlay = (e) => {
+    setCanPlay(true);
+  };
 
+  useEffect(() => {
+    if (onScreen === true && canPlays === true) {
+      audioRef.current.currentTime = videoRef.current.currentTime;
+      videoRef.current.play();
+      audioRef.current.play();
 
-                        const clickFunc = () =>{
-                              if(click === false){
-                                    setClicked(true)
-                                    setCount(1)
-                              }
-                              else{
-                                    setClicked(false)
-                                    setCount('')
-                                    console.log(click)
+      playRef.current.style.display = "none";
+    }
+  });
 
-                              }
-                        }
-                        useEffect(()=>{
-                              if(onScreen === true){
-                                    videoRef.current.play()
-                                    audioRef.current.play()
-                                    
-                              }
-                              else{
-                                    videoRef.current.pause()
-                                    audioRef.current.pause()   
+  const videoPlay = () => {
+    if (
+      videoRef.current.paused === false &&
+      audioRef.current.paused === false
+    ) {
+      videoRef.current.pause();
+      audioRef.current.pause();
+      playRef.current.style.display = "block";
+    } else {
+      videoRef.current.play();
+      audioRef.current.play();
+      playRef.current.style.display = "none";
+    }
+  };
+  return (
+    <div id="video-container" ref={ref}>
+      <img ref={playRef} id="play-btn" src="./play.png" alt="play" />
 
+      <h1 id="logo"> F</h1>
 
-                              }
-                        })
-                        const videoPlay = ()=>{
-                          videoRef.current.play()
-                          audioRef.current.play()
-
-                        }
-                        return(
-                              
-                        <div id='video-container'  ref={ref}>        
-                        <img ref={playRef} id='play-btn' src= './play.png'  alt='play'/>
-                        <h1  id='logo'> F</h1>
-                        
-                        
-                        <div id='ld'>
-                        <IconButton id='icons' onClick={clickFunc}>
-      {click ? <FavoriteIcon style={{ fontSize: '40px' }} />  :<FavoriteBorderIcon style={{ fontSize: '40px' }}/> }
-    </IconButton>
-                        <span id='like-count'>{count}</span>
-</div>
-
-                  <video  ref={videoRef} 
-                  onClick={videoPlay}
-                        src={source}
-                        type="video/mp4"
-                        ></video>
-                        <audio ref={audioRef}  >      
-                        <source  src={ source&& source.slice(0,37)+'audio.mp4' }>
-                              </source>
-                              </audio>
-                        </div>     
-                        )
-
-
-                  }
-                  export default Video
+      <div id="ld">
+        <IconButton id="icons" onClick={clickFunc}>
+          {click ? (
+            <FavoriteIcon style={{ fontSize: "40px" }} />
+          ) : (
+            <FavoriteBorderIcon style={{ fontSize: "40px" }} />
+          )}
+        </IconButton>
+        <span id="like-count">{count}</span>
+      </div>
+      {onScreen ? (
+        <video
+          ref={videoRef}
+          onClick={videoPlay}
+          width="450"
+          height="900"
+          src={source.substring(0, 32) + "DASH_480.mp4?source=fallback"}
+          type="video/mp4"
+          preload="auto"
+          onCanPlayThrough={canPlay}
+          playsinline
+        />
+      ) : (
+        <div>Loading...</div>
+      )}
+      {onScreen ? (
+        <audio ref={audioRef}>
+          <source src={source && source.slice(0, 37) + "audio.mp4"} />
+        </audio>
+      ) : (
+        console.log("audio element is loading")
+      )}
+    </div>
+  );
+}
+export default Video;
