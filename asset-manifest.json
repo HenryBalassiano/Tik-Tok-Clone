@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Tik-Tok-Clone/static/css/main.db9ff75f.chunk.css",
-    "main.js": "/Tik-Tok-Clone/static/js/main.8f14ad7d.chunk.js",
-    "main.js.map": "/Tik-Tok-Clone/static/js/main.8f14ad7d.chunk.js.map",
+    "main.css": "/Tik-Tok-Clone/static/css/main.1e7d80f3.chunk.css",
+    "main.js": "/Tik-Tok-Clone/static/js/main.fdac7b7f.chunk.js",
+    "main.js.map": "/Tik-Tok-Clone/static/js/main.fdac7b7f.chunk.js.map",
     "runtime-main.js": "/Tik-Tok-Clone/static/js/runtime-main.fadec8d1.js",
     "runtime-main.js.map": "/Tik-Tok-Clone/static/js/runtime-main.fadec8d1.js.map",
     "static/css/2.b3443363.chunk.css": "/Tik-Tok-Clone/static/css/2.b3443363.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.8056746b.chunk.js.map": "/Tik-Tok-Clone/static/js/3.8056746b.chunk.js.map",
     "index.html": "/Tik-Tok-Clone/index.html",
     "static/css/2.b3443363.chunk.css.map": "/Tik-Tok-Clone/static/css/2.b3443363.chunk.css.map",
-    "static/css/main.db9ff75f.chunk.css.map": "/Tik-Tok-Clone/static/css/main.db9ff75f.chunk.css.map",
+    "static/css/main.1e7d80f3.chunk.css.map": "/Tik-Tok-Clone/static/css/main.1e7d80f3.chunk.css.map",
     "static/js/2.91473f04.chunk.js.LICENSE.txt": "/Tik-Tok-Clone/static/js/2.91473f04.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fadec8d1.js",
     "static/css/2.b3443363.chunk.css",
     "static/js/2.91473f04.chunk.js",
-    "static/css/main.db9ff75f.chunk.css",
-    "static/js/main.8f14ad7d.chunk.js"
+    "static/css/main.1e7d80f3.chunk.css",
+    "static/js/main.fdac7b7f.chunk.js"
   ]
 }
