@@ -45,11 +45,13 @@ function App() {
         for (var i = 7; i < mediaData.length; i++) {
           if (
             mediaData[i].data.media !== null &&
-            mediaData[i].data.secure_media.reddit_video.bitrate_kbps < 2800
-          )
+            mediaData[i].data.secure_media.reddit_video.bitrate_kbps < 2500 &&
+            mediaData[i].data.secure_media.reddit_video.duration < 45
+          ) {
             video.push(mediaData[i].data.media);
-          author.push(mediaData[i].data.author);
-          title.push(mediaData[i].data.title);
+            author.push(mediaData[i].data.author);
+            title.push(mediaData[i].data.title);
+          }
         }
         setData([
           {

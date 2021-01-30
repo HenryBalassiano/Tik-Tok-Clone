@@ -4,18 +4,13 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-function useOnScreen(ref, rootMargin = "0px") {
+function useOnScreen(ref) {
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIntersecting(entry.isIntersecting);
-      },
-      {
-        rootMargin,
-      }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      setIntersecting(entry.isIntersecting);
+    });
     if (ref.current) {
       observer.observe(ref.current);
     }
@@ -26,9 +21,23 @@ function useOnScreen(ref, rootMargin = "0px") {
 
   return isIntersecting;
 }
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
 
 function Video({ source }) {
-  const [play, setPlay] = useState(false);
   const [click, setClicked] = useState(false);
   const [count, setCount] = useState();
   const [canPlays, setCanPlay] = useState(false);
@@ -39,7 +48,8 @@ function Video({ source }) {
   const ref = useRef();
   const navSec = useRef(null);
 
-  const onScreen = useOnScreen(ref, "100px");
+  const onScreen = useOnScreen(ref);
+  const debouncedSearchTerm = useDebounce(onScreen, 400);
 
   const clickFunc = () => {
     if (click === false) {
@@ -56,7 +66,7 @@ function Video({ source }) {
   };
 
   useEffect(() => {
-    if (onScreen === true && canPlays === true) {
+    if (debouncedSearchTerm === true && canPlays === true) {
       audioRef.current.currentTime = videoRef.current.currentTime;
       videoRef.current.play();
       audioRef.current.play();
@@ -95,7 +105,7 @@ function Video({ source }) {
         </IconButton>
         <span id="like-count">{count}</span>
       </div>
-      {onScreen ? (
+      {debouncedSearchTerm ? (
         <video
           ref={videoRef}
           onClick={videoPlay}
@@ -110,7 +120,7 @@ function Video({ source }) {
       ) : (
         <div>Loading...</div>
       )}
-      {onScreen ? (
+      {debouncedSearchTerm ? (
         <audio ref={audioRef}>
           <source src={source && source.slice(0, 37) + "audio.mp4"} />
         </audio>
